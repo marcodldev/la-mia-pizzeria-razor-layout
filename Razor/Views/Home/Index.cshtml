@@ -1,10 +1,101 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 
-    string nome = "Marco";
+    string nome = "Marco ";
 
     string cognome = "De Lisi";
+
+    int Somma(int n)
+    {
+        int somma = 1;
+
+        for(int i = 0; i <= n; i++ )
+        {
+            somma += i ;
+
+        }
+        return somma;
+    }
+
+    int conteggioA = 0;
+
+    string frase = "nel mezzo del cammin di nostra vita";
+
+    foreach (char A in frase)
+    {
+        if (A == 'a')
+        {
+            conteggioA++;
+        }
+    }
+
+    List<int> numeri = new List<int>();
+
+    Random rand = new Random();
+
+    for (int i = 0; i < 20; i++)
+    {
+        int numeroRand = rand.Next(1, 91);  
+        numeri.Add(numeroRand); 
+    }
+
+
+
+    string DataFormattata = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+
+    DateTime dataSetteGiorniFa = DateTime.Now.AddDays(-7);
+
+    string DataFormattataSetteGiorniFa = dataSetteGiorniFa.ToString("yyyy-MM-dd HH:mm:ss");
+
+    string giornoItaliano = DateTime.Now.ToString("dddd");
+
+    DateTime dataTraUnAnno = DateTime.Now.AddYears(1);
+
+    string nomeGiornoTraUnAnno = dataTraUnAnno.ToString("dddd");
 }
+
+@*HTML*@
+@*/-------------------------------------------\*@
 
 <p>Il mio nome è: <h2>@(nome + cognome)</h2></p>
 
+<span>Funzione somma: Ho passato come parametro '5', la mia funzione stampa la somma dei numeri che vanno <br />
+    da 1 al numero inserito come parametro, il risultato è : @Somma(5)</span>
+
+
+
+<br />
+<br />
+
+
+
+<span>Nella frase '@frase' la lettera 'a' è contenuta: @conteggioA volte.</span>
+
+
+<br />
+<br />
+
+<p>Lista numeri generati casualmente: <br /> </p>
+<ul>
+    @foreach (int numero in numeri)
+    {
+        if (numero >= 20 && numero <= 70)
+        {
+            <li>@numero</li>
+        }
+    }
+</ul>
+
+<br />
+<br />
+
+<p>Oggi è giorno: @DataFormattata </p>
+
+<br />
+<br />
+
+<p>
+    La data di 7 giorni fa era: @DataFormattataSetteGiorniFa
+    <br /> oggi è @giornoItaliano.
+    <br /> Tra un anno preciso sarà: @nomeGiornoTraUnAnno
+</p>
